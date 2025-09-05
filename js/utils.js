@@ -1,5 +1,10 @@
-// const API_BASE = "http://localhost:5000/api/user";
-const API_BASE = "https://bank-backend-mgfn.onrender.com/api/user";
+// Change this in DevTools if you want to hit local server:
+// localStorage.setItem('API_BASE', 'http://localhost:5000/api/user');
+const API_BASE =
+  localStorage.getItem("API_BASE") || "http://localhost:5000/api/user";
+// const API_BASE =
+//   localStorage.getItem("API_BASE") ||
+//   "https://bank-backend-mgfn.onrender.com/api/user";
 
 async function apiRequest(path, method = "GET", body = null) {
   const headers = { "Content-Type": "application/json" };
@@ -12,11 +17,20 @@ async function apiRequest(path, method = "GET", body = null) {
     body: body ? JSON.stringify(body) : null,
   });
 
-  if (!res.ok) throw new Error((await res.json()).msg || "Error");
-  return res.json();
+  // try to read json always
+  let data = null;
+  try {
+    data = await res.json();
+  } catch (_) {}
+
+  if (!res.ok) {
+    const msg = (data && (data.msg || data.message)) || "Request error";
+    throw new Error(msg);
+  }
+  return data;
 }
 
-// Password validation: must start with capital, special char, 8+ chars
+// Front-end password rule (kept aligned with backend)
 function validPassword(pw) {
-  return /^[A-Z](?=.*[!@#$%^&])[A-Za-z0-9!@#$%^&*]{7,}$/.test(pw);
+  return /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(pw);
 }

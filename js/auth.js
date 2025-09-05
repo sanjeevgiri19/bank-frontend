@@ -12,13 +12,17 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const phone = document.getElementById("loginPhone").value.trim();
   const password = document.getElementById("loginPassword").value.trim();
+  const error = document.getElementById("loginError");
+  error.textContent = "";
+
   try {
     const data = await apiRequest("/login", "POST", { phone, password });
     localStorage.setItem("token", data.token);
     localStorage.setItem("username", data.username);
+    localStorage.setItem("phone", data.phone);
     window.location.href = "landing.html";
   } catch (err) {
-    document.getElementById("loginError").textContent = err.message;
+    error.textContent = err.message;
   }
 });
 
@@ -33,20 +37,31 @@ document
     const password = document.getElementById("regPassword").value.trim();
     const pin = document.getElementById("regPin").value.trim();
     const error = document.getElementById("registerError");
+    error.textContent = "";
 
-    // Age check
-    const birth = new Date(dob);
-    const age = new Date().getFullYear() - birth.getFullYear();
-    if (age < 18) {
-      error.textContent = "Must be 18+";
+    // simple validations
+    if (!/^\d{10}$/.test(phone)) {
+      error.textContent = "Phone must be 10 digits";
       return;
     }
     if (!validPassword(password)) {
-      error.textContent = "Invalid password format";
+      error.textContent =
+        "Password must be 8+ chars, include uppercase, number and symbol";
       return;
     }
-    if (!/^[0-9]{4}$/.test(pin)) {
+    if (!/^\d{4}$/.test(pin)) {
       error.textContent = "PIN must be 4 digits";
+      return;
+    }
+
+    // age check
+    const birth = new Date(dob);
+    const now = new Date();
+    let age = now.getFullYear() - birth.getFullYear();
+    const m = now.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+    if (age < 18) {
+      error.textContent = "Must be 18+ to register";
       return;
     }
 
@@ -58,7 +73,7 @@ document
         password,
         pin,
       });
-      alert("Registration successful! Please login.");
+      alert("Registration successful. Please login.");
       toggleLogin();
     } catch (err) {
       error.textContent = err.message;
