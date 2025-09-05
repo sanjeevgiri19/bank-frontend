@@ -6,37 +6,58 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>🏦 Bank App</h1>
+  <div class="auth-container">
+    <h1>🏦 MyBank</h1>
 
-  <!-- Login Form -->
-  <form id="loginForm">
-    <h2>Login</h2>
-    <label>Phone:</label>
-    <input type="text" id="loginPhone" required>
-    <label>Password:</label>
-    <input type="password" id="loginPassword" required>
-    <p id="loginError" class="error"></p>
-    <button type="submit">Login</button>
-    <p class="toggle" onclick="toggleRegister()">Don’t have an account? Register here</p>
-  </form>
+    <!-- Login Form -->
+    <div class="auth-card" id="loginForm">
+      <h2>Welcome Back!</h2>
+      <form>
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input type="tel" id="loginPhone" required placeholder="Enter your phone number">
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" required placeholder="Enter your password">
+        </div>
+        <p id="loginError" class="error"></p>
+        <button type="submit" class="auth-button">Login</button>
+        <p class="toggle-text">Don't have an account? <a href="#" onclick="toggleRegister()">Register here</a></p>
+      </form>
+    </div>
 
-  <!-- Register Form -->
-  <form id="registerForm" style="display:none">
-    <h2>Register</h2>
-    <label>Full Name:</label>
-    <input type="text" id="regName" required>
-    <label>Phone:</label>
-    <input type="text" id="regPhone" required>
-    <label>Date of Birth:</label>
-    <input type="date" id="regDob" required>
-    <label>Password:</label>
-    <input type="password" id="regPassword" required>
-    <label>PIN (4 digits):</label>
-    <input type="password" id="regPin" required>
-    <p id="registerError" class="error"></p>
-    <button type="submit">Register</button>
-    <p class="toggle" onclick="toggleLogin()">Already have an account? Login here</p>
-  </form>
+    <!-- Register Form -->
+    <div class="auth-card" id="registerForm" style="display:none">
+      <h2>Create Account</h2>
+      <form>
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" id="regName" required placeholder="Enter your full name">
+        </div>
+        <div class="input-group">
+          <label>Phone Number</label>
+          <input type="tel" id="regPhone" required placeholder="Enter your phone number">
+        </div>
+        <div class="input-group">
+          <label>Date of Birth</label>
+          <input type="date" id="regDob" required>
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="regPassword" required placeholder="Create password">
+          <small>Must contain capital letter, number & special character</small>
+        </div>
+        <div class="input-group">
+          <label>PIN (4 digits)</label>
+          <input type="password" id="regPin" required placeholder="Create 4-digit PIN">
+        </div>
+        <p id="registerError" class="error"></p>
+        <button type="submit" class="auth-button">Register</button>
+        <p class="toggle-text">Already have an account? <a href="#" onclick="toggleLogin()">Login here</a></p>
+      </form>
+    </div>
+  </div>
 
   <script src="js/utils.js"></script>
   <script src="js/auth.js"></script>
