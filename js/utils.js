@@ -1,10 +1,12 @@
 // Change this in DevTools if you want to hit local server:
 // localStorage.setItem('API_BASE', 'http://localhost:5000/api/user');
-const API_BASE =
-  localStorage.getItem("API_BASE") || "http://localhost:5000/api/user";
+
 // const API_BASE =
-//   localStorage.getItem("API_BASE") ||
-//   "https://bank-backend-mgfn.onrender.com/api/user";
+// localStorage.getItem("API_BASE") || "http://localhost:5000/api/user";
+
+const API_BASE =
+  localStorage.getItem("API_BASE") ||
+  "https://bank-backend-mgfn.onrender.com/api/user";
 
 async function apiRequest(path, method = "GET", body = null) {
   const headers = { "Content-Type": "application/json" };
