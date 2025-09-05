@@ -1,0 +1,121 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body styling */
+body {
+  background: #f7f8fc;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #3498db;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Back link */
+.back-link {
+  display: block;
+  margin: 10px;
+  color: #3498db;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Main container */
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+/* Card style for sections */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Section titles */
+.card h2 {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Inputs */
+input,
+select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 1rem;
+}
+
+/* Buttons */
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+button:hover {
+  background: #2980b9;
+}
+
+/* Balance */
+.balance {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Messages */
+.message {
+  margin-top: 10px;
+  padding: 10px;
+  background: #ecf0f1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  button {
+    font-size: 0.9rem;
+  }
+}

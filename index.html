@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank App – Login/Register</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>🏦 Bank App</h1>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <h2>Login</h2>
+    <label>Phone:</label>
+    <input type="text" id="loginPhone" required>
+    <label>Password:</label>
+    <input type="password" id="loginPassword" required>
+    <p id="loginError" class="error"></p>
+    <button type="submit">Login</button>
+    <p class="toggle" onclick="toggleRegister()">Don’t have an account? Register here</p>
+  </form>
+
+  <!-- Register Form -->
+  <form id="registerForm" style="display:none">
+    <h2>Register</h2>
+    <label>Full Name:</label>
+    <input type="text" id="regName" required>
+    <label>Phone:</label>
+    <input type="text" id="regPhone" required>
+    <label>Date of Birth:</label>
+    <input type="date" id="regDob" required>
+    <label>Password:</label>
+    <input type="password" id="regPassword" required>
+    <label>PIN (4 digits):</label>
+    <input type="password" id="regPin" required>
+    <p id="registerError" class="error"></p>
+    <button type="submit">Register</button>
+    <p class="toggle" onclick="toggleLogin()">Already have an account? Login here</p>
+  </form>
+
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
