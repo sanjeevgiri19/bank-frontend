@@ -6,7 +6,7 @@
 
 const API_BASE =
   localStorage.getItem("API_BASE") ||
-  "https://bank-backend-mgfn.onrender.com/api/user";
+  "https://bank-app-backend-l663.onrender.com/api/user";
 
 async function apiRequest(path, method = "GET", body = null) {
   const headers = { "Content-Type": "application/json" };
